@@ -5,22 +5,32 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dynamic Time-Based Webpage</title>
   <script>
-    // Function to set background color based on time
     function setBackground() {
       const hour = new Date().getHours();
-      let color;
+      let color, range, nextChange;
 
       if (hour >= 6 && hour < 12) {
-        color = "orange"; // Morning
+        color = "orange";
+        range = "Morning (6am–12pm)";
+        nextChange = "12:00pm";
       } else if (hour >= 12 && hour < 18) {
-        color = "red"; // Afternoon
+        color = "red";
+        range = "Afternoon (12pm–6pm)";
+        nextChange = "6:00pm";
       } else if (hour >= 18 && hour < 21) {
-        color = "lightblue"; // Evening
+        color = "lightblue";
+        range = "Evening (6pm–9pm)";
+        nextChange = "9:00pm";
       } else {
-        color = "darkblue"; // Night
+        color = "darkblue";
+        range = "Night (9pm–6am)";
+        nextChange = "6:00am";
       }
 
       document.body.style.backgroundColor = color;
+      document.getElementById("status").textContent =
+        "Current time range detected is " + range +
+        ". The next change will be at " + nextChange + ".";
     }
     window.onload = setBackground;
   </script>
@@ -30,5 +40,6 @@
   <p>Course: COP4813</p>
   <p>Major: Computer Science BS</p>
   <p>Welcome to my time based color changing page!</p>
+  <p id="status"></p>
 </body>
 </html>
