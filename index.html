@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dynamic Time-Based Webpage</title>
   <script>
+    // Function to set the background color and update the message
     function setBackground() {
-      const hour = new Date().getHours();
+      const hour = new Date().getHours(); // get the current hour (0–23)
       let color, range, nextChange;
 
+      // Decide which time range we are in and set the background color
       if (hour >= 6 && hour < 12) {
         color = "orange";
         range = "Morning (6am–12pm)";
@@ -27,19 +29,27 @@
         nextChange = "6:00am";
       }
 
+      // Change the background color of the page
       document.body.style.backgroundColor = color;
+
+      // Update the status message at the bottom of the page
       document.getElementById("status").textContent =
         "Current time range detected is " + range +
         ". The next change will be at " + nextChange + ".";
     }
+
+    // Run the function as soon as the page loads
     window.onload = setBackground;
   </script>
 </head>
 <body>
+  <!-- Basic page content -->
   <h1>Cullan Lynch</h1>
   <p>Course: COP4813</p>
   <p>Major: Computer Science BS</p>
   <p>Welcome to my time based color changing page!</p>
+
+  <!-- Status message will show up here -->
   <p id="status"></p>
 </body>
 </html>
